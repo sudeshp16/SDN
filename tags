@@ -1,0 +1,325 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Address	include/sdn_tls.h	/^typedef union Address$/;"	u
+Address	include/sdn_tls.h	/^}Address;$/;"	t	typeref:union:Address
+BUFFER_SIZE	dtls_sctp_echo.c	54;"	d	file:
+BUFFER_SIZE	dtls_udp_discard.c	57;"	d	file:
+BUFFER_SIZE	dtls_udp_echo.c	55;"	d	file:
+COOKIE_SECRET_LENGTH	dtls_udp_discard.c	58;"	d	file:
+COOKIE_SECRET_LENGTH	dtls_udp_echo.c	56;"	d	file:
+COOKIE_SECRET_LENGTH	include/sdn_tls.h	60;"	d
+Client_Thread	src/client_operations.c	/^void * Client_Thread(void *data)$/;"	f
+CloseLogger	src/logger.c	/^int CloseLogger(struct logger *thisptr)$/;"	f
+ConfigData	include/main.h	/^typedef struct ConfigData$/;"	s
+ConfigData	include/main.h	/^}ConfigData;$/;"	t	typeref:struct:ConfigData
+Crypto_Thread_destroy	src/sdn_tls_1.0.c	/^int  Crypto_Thread_destroy(pthread_mutex_t **mutex)$/;"	f
+Crypto_Thread_destroy	src/sdn_tls_udp.c	/^int  Crypto_Thread_destroy(pthread_mutex_t **mutex)$/;"	f
+Crypto_Thread_destroy_sctp	src/sdn_tls_sctp.c	/^int  Crypto_Thread_destroy_sctp(pthread_mutex_t **mutex)$/;"	f
+Crypto_Thread_init	src/sdn_tls_1.0.c	/^int Crypto_Thread_init(pthread_mutex_t **mutex_buf)$/;"	f
+Crypto_Thread_init	src/sdn_tls_udp.c	/^int Crypto_Thread_init(pthread_mutex_t **mutex_buf)$/;"	f
+Crypto_Thread_init_sctp	src/sdn_tls_sctp.c	/^int Crypto_Thread_init_sctp(pthread_mutex_t **mutex_buf)$/;"	f
+DecryptData_TCP	src/sniff.c	/^void DecryptData_TCP(u_char *args,const struct pcap_pkthdr* pkthdr,const u_char*$/;"	f
+ETHER_ADDR_LEN	include/sniff.h	21;"	d
+ETHER_HDRLEN	include/sniff.h	17;"	d
+GenerateRSA	src/pub_private_enc_dec.c	/^RSA * GenerateRSA(const unsigned char * key,int public)$/;"	f
+GetLoggerType	src/logger.c	/^SDN_LOGGER_TYPE GetLoggerType(char *pcLoggerType)$/;"	f
+HandleSCTPClientServer	src/sdn_tls_sctp.c	/^void * HandleSCTPClientServer(void *arg)$/;"	f
+HandleSCTPServerClient	src/sdn_tls_sctp.c	/^void * HandleSCTPServerClient(void * args)$/;"	f
+HandleUDPClientServer	src/sdn_tls_udp.c	/^void * HandleUDPClientServer(void *arg)$/;"	f
+HandleUDPServerClient	src/sdn_tls_udp.c	/^void * HandleUDPServerClient(void * args)$/;"	f
+InitSCTPSSL	src/sdn_tls_sctp.c	/^SSL_CTX * InitSCTPSSL(pthread_mutex_t **mutex, char * pcCertificate, char *pcPrivate_key, char *pcsSSL_version, char * pcCipherlist, SERVICEMODE mode)$/;"	f
+InitSSLClient	src/sdn_tls_1.0.c	/^SSL_CTX * InitSSLClient(char * pcCertificate, char *pcPrivate_key, TRANSPORT_MODE tmode, char *pcsSSL_version, char * pcCipherlist)$/;"	f
+InitSSLLibrary	src/sdn_tls_1.0.c	/^int InitSSLLibrary(pthread_mutex_t **mutex)$/;"	f
+InitSSLServer	src/sdn_tls_1.0.c	/^SSL_CTX * InitSSLServer(pthread_mutex_t **mutex, char * pcCertificate, char *pcPrivate_key, TRANSPORT_MODE tmode, char *pcsSSL_version, char * pcCipherlist)$/;"	f
+InitUDPSSL	src/sdn_tls_udp.c	/^SSL_CTX * InitUDPSSL(pthread_mutex_t **mutex, char * pcCertificate, char *pcPrivate_key, char *pcsSSL_version, char * pcCipherlist, SERVICEMODE mode)$/;"	f
+LOGGER_TYPE_FILE	include/sdn_logger.h	/^	LOGGER_TYPE_FILE =0,$/;"	e	enum:SDN_LOGGER_TYPE
+LOGGER_TYPE_FILE	src/sdn_logger.h	/^	LOGGER_TYPE_FILE =0,$/;"	e	enum:SDN_LOGGER_TYPE
+LOGGER_TYPE_SYSLOG	include/sdn_logger.h	/^	LOGGER_TYPE_SYSLOG$/;"	e	enum:SDN_LOGGER_TYPE
+LOGGER_TYPE_SYSLOG	src/sdn_logger.h	/^	LOGGER_TYPE_SYSLOG$/;"	e	enum:SDN_LOGGER_TYPE
+Logger	include/sdn_logger.h	/^}Logger;$/;"	t	typeref:struct:logger
+Logger	src/sdn_logger.h	/^}Logger;$/;"	t	typeref:struct:logger
+MYSQLConnectQueryType	include/MYSQLConnector.h	/^}MYSQLConnectQueryType;$/;"	t	typeref:enum:MYSQLConnectorQueryType
+MYSQLConnector	include/MYSQLConnector.h	/^typedef struct MYSQLConnector$/;"	s
+MYSQLConnector	include/MYSQLConnector.h	/^}MYSQLConnector;$/;"	t	typeref:struct:MYSQLConnector
+MYSQLConnectorQueryType	include/MYSQLConnector.h	/^typedef enum MYSQLConnectorQueryType$/;"	g
+MYSQLConnector_MakeQuery	src/MYSQLConnector.c	/^MYSQLConnector_MakeQuery(MYSQLConnector * this, $/;"	f
+MYSQLConnector_exit	src/MYSQLConnector.c	/^MYSQLConnector_exit(MYSQLConnector *this)$/;"	f
+MYSQLConnector_init	src/MYSQLConnector.c	/^	MYSQLConnector_init(MYSQLConnector *this, $/;"	f
+MYSQLConnector_init	src/MYSQLConnector.c	/^EXPORT(MYSQLConnector_init);$/;"	v
+MakeQuery	include/MYSQLConnector.h	/^	int (*MakeQuery)(struct MYSQLConnector *this,$/;"	m	struct:MYSQLConnector
+OpenLogger	src/logger.c	/^int OpenLogger(struct logger *thisptr, char *pcLoggerType, char *pcFileName, int loglevel, int facility)$/;"	f
+PrivateDecrypt	src/pub_private_enc_dec.c	/^int PrivateDecrypt(unsigned char * enc_data,int data_len,unsigned char * key, unsigned char *decrypted)$/;"	f
+PublicEncrypt	src/pub_private_enc_dec.c	/^int PublicEncrypt(unsigned char * data,int data_len,unsigned char * key, unsigned char *encrypted)$/;"	f
+QTYPE_INSERT	include/MYSQLConnector.h	/^	QTYPE_INSERT,$/;"	e	enum:MYSQLConnectorQueryType
+QTYPE_SELECT	include/MYSQLConnector.h	/^	QTYPE_SELECT$/;"	e	enum:MYSQLConnectorQueryType
+QTYPE_UPDATE	include/MYSQLConnector.h	/^	QTYPE_UPDATE,$/;"	e	enum:MYSQLConnectorQueryType
+RecvData	src/sdn_transport.c	/^int RecvData(int iSocketFd, TRANSPORT_MODE mode, char * buffer, int size, int *iAddrFamily, struct sockaddr * src_addr)$/;"	f
+RegisterSignals	src/sdn_main.c	/^int RegisterSignals()$/;"	f
+SCTP_FUTURE_ASSOC	include/sdn_transport.h	29;"	d
+SCTP_TLS_SERVER_LISTEN	src/sdn_tls_sctp.c	/^int SCTP_TLS_SERVER_LISTEN(SDNSSL *this, SSL_CTX *ctx, int iSocketFD)$/;"	f
+SDNSSL	include/sdn_tls.h	/^typedef struct SDNSSL$/;"	s
+SDNSSL	include/sdn_tls.h	/^}SDNSSL;$/;"	t	typeref:struct:SDNSSL
+SDNSSL	src/tls.c	/^typedef struct SDNSSL$/;"	s	file:
+SDNSSL	src/tls.c	/^}SDNSSL;$/;"	t	typeref:struct:SDNSSL	file:
+SDN_LOGGER_TYPE	include/sdn_logger.h	/^typedef enum SDN_LOGGER_TYPE$/;"	g
+SDN_LOGGER_TYPE	include/sdn_logger.h	/^}SDN_LOGGER_TYPE;$/;"	t	typeref:enum:SDN_LOGGER_TYPE
+SDN_LOGGER_TYPE	src/sdn_logger.h	/^typedef enum SDN_LOGGER_TYPE$/;"	g
+SDN_LOGGER_TYPE	src/sdn_logger.h	/^}SDN_LOGGER_TYPE;$/;"	t	typeref:enum:SDN_LOGGER_TYPE
+SERVICEMODE	include/sdn_transport.h	/^typedef enum  SERVICEMODE$/;"	g
+SERVICEMODE	include/sdn_transport.h	/^} SERVICEMODE;$/;"	t	typeref:enum:SERVICEMODE
+SERVICEMODE_CLIENT	include/sdn_transport.h	/^    SERVICEMODE_CLIENT$/;"	e	enum:SERVICEMODE
+SERVICEMODE_SERVER	include/sdn_transport.h	/^    SERVICEMODE_SERVER,$/;"	e	enum:SERVICEMODE
+SHUTDOWN_SCTP_TLS_SERVER	src/sdn_tls_sctp.c	/^void SHUTDOWN_SCTP_TLS_SERVER(SSL_CTX *ctx, pthread_mutex_t **mutex)$/;"	f
+SHUTDOWN_TLS_SERVER	include/sdn_tls.h	/^    void (*SHUTDOWN_TLS_SERVER)(SSL_CTX *ctx, pthread_mutex_t **mutex);$/;"	m	struct:SDNSSL
+SHUTDOWN_UDP_TLS_SERVER	src/sdn_tls_udp.c	/^void SHUTDOWN_UDP_TLS_SERVER(SSL_CTX *ctx, pthread_mutex_t **mutex)$/;"	f
+SOCKET_ACCEPT_ERROR	include/sdn_transport.h	36;"	d
+SOCKET_BIND_ERROR	include/sdn_transport.h	34;"	d
+SOCKET_CONNECT_ERROR	include/sdn_transport.h	37;"	d
+SOCKET_CREATE_ERROR	include/sdn_transport.h	33;"	d
+SOCKET_INVALID_SD_ERROR	include/sdn_transport.h	38;"	d
+SOCKET_IPV6_ADDR_ERROR	include/sdn_transport.h	39;"	d
+SOCKET_LISTEN_ERROR	include/sdn_transport.h	35;"	d
+SOCKET_REUSEADDR_ERROR	include/sdn_transport.h	40;"	d
+SSLClientHandleLoop	src/sdn_tls_1.0.c	/^void SSLClientHandleLoop(int iSocketfd , SSL_CTX * ctx, TRANSPORT_MODE tmode, int tun_fd)$/;"	f
+SSL_THREAD_DATA	include/sdn_tls.h	/^typedef struct SSL_THREAD_DATA$/;"	s
+SSL_THREAD_DATA	include/sdn_tls.h	/^}SSL_THREAD_DATA;$/;"	t	typeref:struct:SSL_THREAD_DATA
+SendData	src/sdn_transport.c	/^int SendData(int iSocketFd, TRANSPORT_MODE mode, char * data, int length, int iAddrFamily, char * pcAddress, uint16_t udp_dport)$/;"	f
+ServerHandleLoop	src/sdn_tls_1.0.c	/^int ServerHandleLoop(int iSocketfd , SSL_CTX * ctx, TRANSPORT_MODE tmode, int iAddrFamily)$/;"	f
+SetupInterFaceParams	src/sdn_interface_ops.c	/^int SetupInterFaceParams(char *pcDev, int iAddrFamily, char *pcIPAdrress, char *pcNetMask, char * pcMacAddr, int iMTU, char *szStatus)$/;"	f
+SniffData	src/sniff.c	/^int SniffData(pcap_handler fpCallbackHandler, const char *pcInterface, const char * pcFilter, const unsigned char * key)$/;"	f
+Split	src/string_helper.c	/^int Split(const char * in_string, char ***res_string, char * delimiter)$/;"	f
+StartClient	src/sdn_transport.c	/^int StartClient(TRANSPORT_MODE mode, uint16_t iSPort, int iAddressFamily, const char *pcServerAddress, uint16_t iDPort, char *pcError)$/;"	f
+StartServer	src/sdn_transport.c	/^int StartServer(TRANSPORT_MODE mode, const char *pcListenAddr, int iPort, int iAddressFamily, int iBacklog, char *pcError)$/;"	f
+THREAD_cleanup	dtls_sctp_echo.c	/^int THREAD_cleanup() {$/;"	f
+THREAD_cleanup	dtls_udp_discard.c	/^int THREAD_cleanup() {$/;"	f
+THREAD_cleanup	dtls_udp_echo.c	/^int THREAD_cleanup() {$/;"	f
+THREAD_setup	dtls_sctp_echo.c	/^int THREAD_setup() {$/;"	f
+THREAD_setup	dtls_udp_discard.c	/^int THREAD_setup() {$/;"	f
+THREAD_setup	dtls_udp_echo.c	/^int THREAD_setup() {$/;"	f
+TLS_CLIENT_CONNECT	include/sdn_tls.h	/^    int (*TLS_CLIENT_CONNECT)(struct SDNSSL *this, Address server_address);$/;"	m	struct:SDNSSL
+TLS_CLIENT_CONNECT	src/tls.c	/^	int (*TLS_CLIENT_CONNECT)(SSL_CTX *ctx, int iSocketFD , void * (*fpClientCommLoop)(void * arg));	$/;"	m	struct:SDNSSL	file:
+TLS_SCTP_CLIENT_CONNECT	src/sdn_tls_sctp.c	/^int TLS_SCTP_CLIENT_CONNECT(struct SDNSSL *this, Address server_address)$/;"	f
+TLS_SERVER_LISTEN	include/sdn_tls.h	/^    int (*TLS_SERVER_LISTEN) (struct SDNSSL *this, SSL_CTX *ctx, int iSocketFD);$/;"	m	struct:SDNSSL
+TLS_SERVER_LISTEN	src/tls.c	/^	int (*TLS_SERVER_LISTEN)(SSL_CTX *ctx, int iSocketFD , void * (*fpServerHandleLoopFn)(void * arg));$/;"	m	struct:SDNSSL	file:
+TLS_TRANSPORT_INIT	include/sdn_tls.h	/^    SSL_CTX * (*TLS_TRANSPORT_INIT)(pthread_mutex_t **mutex, char * pcCertificate, char *pcPrivate_key, char *pcsSSL_version, char * pcCipherlist, SERVICEMODE mode);$/;"	m	struct:SDNSSL
+TLS_TRANSPORT_INIT	src/tls.c	/^	SSL_CTX * (*TLS_TRANSPORT_INIT)(pthread_mutex_t **mutex, char * pcCertificate, char *pcPrivate_key, char *pcsSSL_version, char * pcCipherlist);$/;"	m	struct:SDNSSL	file:
+TLS_UDP_CLIENT_CONNECT	src/sdn_tls_udp.c	/^int TLS_UDP_CLIENT_CONNECT(struct SDNSSL *this, Address server_address)$/;"	f
+TRANSPORT_MODE	include/sdn_transport.h	/^typedef enum TRANSPORT_MODE$/;"	g
+TRANSPORT_MODE	include/sdn_transport.h	/^}TRANSPORT_MODE;$/;"	t	typeref:enum:TRANSPORT_MODE
+TRANSPORT_MODE_SCTP	include/sdn_transport.h	/^	TRANSPORT_MODE_SCTP,$/;"	e	enum:TRANSPORT_MODE
+TRANSPORT_MODE_TCP	include/sdn_transport.h	/^	TRANSPORT_MODE_TCP,$/;"	e	enum:TRANSPORT_MODE
+TRANSPORT_MODE_UDP	include/sdn_transport.h	/^	TRANSPORT_MODE_UDP$/;"	e	enum:TRANSPORT_MODE
+ThreadData	include/main.h	/^}ThreadData;$/;"	t	typeref:struct:thread_data
+UDPSSLServerThread	src/sdn_tls_1.0.c	/^void *UDPSSLServerThread(void *arg)$/;"	f
+UDP_TLS_SERVER_LISTEN	src/sdn_tls_udp.c	/^int UDP_TLS_SERVER_LISTEN(SDNSSL *this, SSL_CTX *ctx, int iSocketFD)$/;"	f
+Usage	dtls_sctp_echo.c	/^char Usage[] =$/;"	v
+Usage	dtls_udp_discard.c	/^char Usage[] =$/;"	v
+Usage	dtls_udp_echo.c	/^char Usage[] =$/;"	v
+WriteLog	include/sdn_logger.h	/^	int (*WriteLog)(struct logger *thisptr, int loglevel, char *fmt, ...);$/;"	m	struct:logger
+WriteLog	src/logger.c	/^int WriteLog(struct logger *thisptr, int loglevel, char *fmt, ...)$/;"	f
+WriteLog	src/sdn_logger.h	/^	int (*WriteLog)(struct logger *this, int loglevel, char *fmt, ...);$/;"	m	struct:logger
+__CLI_TUN_H__	include/sdn_tun.h	2;"	d
+__COMMUNICATE_H__	include/sdn_transport.h	5;"	d
+__MAIN_H__	include/main.h	14;"	d
+__MYSQL_CONNECTOR_H__	include/MYSQLConnector.h	2;"	d
+__PUB_PRIVATE_ENCRPYT_H__	include/pub_private_enc_dec.h	2;"	d
+__SDN_LOGGER_H__	include/sdn_logger.h	2;"	d
+__SDN_LOGGER_H__	src/sdn_logger.h	2;"	d
+__SDN_ROUTE_H__	include/sdn_interface_ops.h	2;"	d
+__SDN_TLS_SCTP_H__	include/sdn_tls_sctp.h	2;"	d
+__SDN_TLS_UDP_H__	include/sdn_tls_udp.h	2;"	d
+__SERVER_OPERATIONS_H__	include/server_operations.h	2;"	d
+__SNIFF_H__	include/sniff.h	2;"	d
+__TLS_H__	include/sdn_tls.h	2;"	d
+address	dtls_sctp_echo.c	/^	char address[INET6_ADDRSTRLEN+1];$/;"	m	struct:pass_info	file:
+address_family	include/main.h	/^	int address_family;$/;"	m	struct:ConfigData
+bio	include/sdn_tls.h	/^    BIO *bio;$/;"	m	struct:SSL_THREAD_DATA
+bio	src/tls.c	/^	BIO *bio;$/;"	m	struct:SDNSSL	file:
+buffer	include/sdn_logger.h	/^	char buffer[2048];$/;"	m	struct:logger
+buffer	src/sdn_logger.h	/^	char buffer[2048];$/;"	m	struct:logger
+certificate	include/main.h	/^	char * certificate;$/;"	m	struct:ConfigData
+clientHandleThread	include/sdn_tls.h	/^	void * (*clientHandleThread)(void *);$/;"	m	struct:SDNSSL
+client_addr	dtls_udp_discard.c	/^	} server_addr, client_addr;$/;"	m	struct:pass_info	typeref:union:pass_info::__anon2	file:
+client_addr	dtls_udp_echo.c	/^	} server_addr, client_addr;$/;"	m	struct:pass_info	typeref:union:pass_info::__anon1	file:
+client_addr	include/sdn_tls.h	/^	Address client_addr;$/;"	m	struct:SSL_THREAD_DATA
+client_fd	include/main.h	/^	int client_fd;$/;"	m	struct:thread_data
+client_fd	include/sdn_tls.h	/^    int client_fd;$/;"	m	struct:SDNSSL
+client_fd	include/sdn_tls.h	/^    int client_fd;$/;"	m	struct:SSL_THREAD_DATA
+client_fd	src/tls.c	/^	int client_fd;$/;"	m	struct:SDNSSL	file:
+communication_mode	include/main.h	/^	TRANSPORT_MODE communication_mode;$/;"	m	struct:ConfigData
+config	src/main.c	/^ConfigData config;$/;"	v
+config	src/sdn_main.c	/^ConfigData config;$/;"	v
+connection_handle	dtls_sctp_echo.c	/^void* connection_handle(void *info) {$/;"	f
+connection_handle	dtls_udp_discard.c	/^DWORD WINAPI connection_handle(LPVOID *info) {$/;"	f
+connection_handle	dtls_udp_echo.c	/^DWORD WINAPI connection_handle(LPVOID *info) {$/;"	f
+cookie_initialized	dtls_udp_discard.c	/^int cookie_initialized=0;$/;"	v
+cookie_initialized	dtls_udp_echo.c	/^int cookie_initialized=0;$/;"	v
+cookie_initialized	src/sdn_tls_udp.c	/^int cookie_initialized=0;$/;"	v
+cookie_secret	dtls_udp_discard.c	/^unsigned char cookie_secret[COOKIE_SECRET_LENGTH];$/;"	v
+cookie_secret	dtls_udp_echo.c	/^unsigned char cookie_secret[COOKIE_SECRET_LENGTH];$/;"	v
+cookie_secret	include/sdn_tls.h	/^unsigned char cookie_secret[COOKIE_SECRET_LENGTH];$/;"	v
+ctx	dtls_sctp_echo.c	/^	SSL_CTX *ctx;$/;"	m	struct:pass_info	file:
+ctx	include/main.h	/^    SSL_CTX * ctx;$/;"	m	struct:ConfigData
+ctx	include/sdn_tls.h	/^    SSL_CTX *ctx;$/;"	m	struct:SDNSSL
+ctx	include/sdn_tls.h	/^    SSL_CTX *ctx;$/;"	m	struct:SSL_THREAD_DATA
+ctx	src/tls.c	/^	SSL_CTX *ctx;$/;"	m	struct:SDNSSL	file:
+dest_ip	include/main.h	/^	char dest_ip[32];$/;"	m	struct:ConfigData
+dest_port	include/main.h	/^	int dest_port;$/;"	m	struct:ConfigData
+destroy_tls	src/sdn_tls.c	/^void destroy_tls(SDNSSL *this)$/;"	f
+dev	include/main.h	/^	char dev[32];$/;"	m	struct:thread_data
+dev	src/main.c	/^const char *dev = "sdnadapter%d"; 		$/;"	v
+dev	src/sdn_main.c	/^const char *dev = "sdnadapter%d";$/;"	v
+done	dtls_udp_discard.c	/^int done = 0;$/;"	v
+dtls_verify_callback	dtls_sctp_echo.c	/^int dtls_verify_callback (int ok, X509_STORE_CTX *ctx) {$/;"	f
+dtls_verify_callback	dtls_udp_discard.c	/^int dtls_verify_callback (int ok, X509_STORE_CTX *ctx) {$/;"	f
+dtls_verify_callback	dtls_udp_echo.c	/^int dtls_verify_callback (int ok, X509_STORE_CTX *ctx) {$/;"	f
+dtls_verify_callback	src/sdn_tls_1.0.c	/^int dtls_verify_callback(int ok, X509_STORE_CTX *ctx)$/;"	f
+dtls_verify_callback	src/sdn_tls_udp.c	/^int dtls_verify_callback(int ok, X509_STORE_CTX *ctx)$/;"	f
+dtls_verify_callback_sctp	src/sdn_tls_sctp.c	/^int dtls_verify_callback_sctp(int ok, X509_STORE_CTX *ctx)$/;"	f
+exit	include/MYSQLConnector.h	/^	void (*exit)(struct MYSQLConnector *this);$/;"	m	struct:MYSQLConnector
+exit_logger	src/logger.c	/^void exit_logger(struct logger *thisptr)$/;"	f
+extern	include/sdn_tun.h	23;"	d
+facility	include/sdn_logger.h	/^	int facility;$/;"	m	struct:logger
+facility	src/sdn_logger.h	/^	int facility;$/;"	m	struct:logger
+fd	dtls_sctp_echo.c	/^	int fd;$/;"	m	struct:pass_info	file:
+fpCloseLogger	include/sdn_logger.h	/^	int (*fpCloseLogger)(struct logger *thisptr);$/;"	m	struct:logger
+fpCloseLogger	src/sdn_logger.h	/^	int (*fpCloseLogger)(struct logger *this);$/;"	m	struct:logger
+fpOpenLogger	include/sdn_logger.h	/^	int (*fpOpenLogger)(struct logger *thisptr, char *pcLoggerType, char *filename, int loglevel, int facility);$/;"	m	struct:logger
+fpOpenLogger	src/sdn_logger.h	/^	int (*fpOpenLogger)(struct logger *this, char *pcLoggerType, char *filename, int loglevel, int facility);$/;"	m	struct:logger
+freefields	src/string_helper.c	/^void freefields(char ***fields, int count)$/;"	f
+generate_cookie	dtls_udp_discard.c	/^int generate_cookie(SSL *ssl, unsigned char *cookie, unsigned int *cookie_len)$/;"	f
+generate_cookie	dtls_udp_echo.c	/^int generate_cookie(SSL *ssl, unsigned char *cookie, unsigned int *cookie_len)$/;"	f
+generate_cookie	src/sdn_tls_1.0.c	/^int generate_cookie(SSL *ssl, unsigned char *cookie, unsigned int *cookie_len)$/;"	f
+generate_cookie	src/sdn_tls_udp.c	/^int generate_cookie(SSL *ssl, unsigned char *cookie, unsigned int *cookie_len)$/;"	f
+handle_notifications	dtls_sctp_echo.c	/^void handle_notifications(BIO *bio, void *context, void *buf) {$/;"	f
+handle_notifications	src/sdn_tls_sctp.c	/^void handle_notifications(BIO *bio, void *context, void *buf) {$/;"	f
+handle_sigalrm	dtls_udp_discard.c	/^void handle_sigalrm(int sig) {$/;"	f
+handle_socket_error	dtls_udp_discard.c	/^int handle_socket_error() {$/;"	f
+handle_socket_error	dtls_udp_echo.c	/^int handle_socket_error() {$/;"	f
+handle_socket_error	src/sdn_tls_1.0.c	/^int handle_socket_error() {$/;"	f
+iFd	include/sdn_logger.h	/^	int iFd;$/;"	m	struct:logger
+iFd	src/sdn_logger.h	/^	int iFd;$/;"	m	struct:logger
+iSignalHandler	src/sdn_main.c	/^void iSignalHandler(int iSignal, siginfo_t * info, void * data)$/;"	f
+id_function	dtls_sctp_echo.c	/^static unsigned long id_function() {$/;"	f	file:
+id_function	dtls_udp_discard.c	/^static unsigned long id_function(void) {$/;"	f	file:
+id_function	dtls_udp_echo.c	/^static unsigned long id_function(void) {$/;"	f	file:
+id_function	src/sdn_tls_1.0.c	/^static unsigned long id_function(void) $/;"	f	file:
+id_function	src/sdn_tls_sctp.c	/^static unsigned long id_function(void)$/;"	f	file:
+id_function	src/sdn_tls_udp.c	/^static unsigned long id_function(void)$/;"	f	file:
+in_port_t	dtls_udp_discard.c	34;"	d	file:
+in_port_t	dtls_udp_echo.c	35;"	d	file:
+init	include/MYSQLConnector.h	/^	struct MYSQLConnector * (*init)(struct MYSQLConnector *this, $/;"	m	struct:MYSQLConnector	typeref:struct:MYSQLConnector::init
+init_logger	src/logger.c	/^struct logger * init_logger(struct logger *thisptr, char *pcLoggerType, char *pcFileName, int loglevel, int facility)$/;"	f
+init_tls	src/sdn_tls.c	/^SDNSSL *init_tls(SDNSSL * this, char * pcCertificate, char *pcPrivate_key, char *pcsSSL_version, char * pcCipherlist)$/;"	f
+interrupted	dtls_udp_discard.c	/^int interrupted = 0;$/;"	v
+is_compression_enabled	include/main.h	/^	int is_compression_enabled;$/;"	m	struct:ConfigData
+key	include/main.h	/^	char *key;$/;"	m	struct:ConfigData
+length	dtls_udp_discard.c	/^int length = 100;$/;"	v
+listen_exit_flag	include/sdn_tls.h	/^	int listen_exit_flag;$/;"	m	struct:SDNSSL
+listen_length	include/main.h	/^	short listen_length;$/;"	m	struct:ConfigData
+locking_function	dtls_sctp_echo.c	/^static void locking_function(int mode, int n, const char *file, int line) {$/;"	f	file:
+locking_function	dtls_udp_discard.c	/^static void locking_function(int mode, int n, const char *file, int line) {$/;"	f	file:
+locking_function	dtls_udp_echo.c	/^static void locking_function(int mode, int n, const char *file, int line) {$/;"	f	file:
+locking_function	src/sdn_tls_1.0.c	/^static void locking_function(int mode, int n, const char *file, int line) $/;"	f	file:
+locking_function	src/sdn_tls_sctp.c	/^static void locking_function(int mode, int n, const char *file, int line)$/;"	f	file:
+locking_function	src/sdn_tls_udp.c	/^static void locking_function(int mode, int n, const char *file, int line)$/;"	f	file:
+logger	include/sdn_logger.h	/^typedef struct logger$/;"	s
+logger	src/sdn_logger.h	/^typedef struct logger$/;"	s
+loglevel	include/sdn_logger.h	/^	int loglevel;$/;"	m	struct:logger
+loglevel	src/sdn_logger.h	/^	int loglevel;$/;"	m	struct:logger
+main	dtls_sctp_echo.c	/^int main(int argc, char **argv)$/;"	f
+main	dtls_udp_discard.c	/^int main(int argc, char **argv)$/;"	f
+main	dtls_udp_echo.c	/^int main(int argc, char **argv)$/;"	f
+main	src/main.c	/^int main(int argc, char *argv[], char *envp[])$/;"	f
+main	src/sdn_main.c	/^int main(int argc, char *argv[], char *envp[])$/;"	f
+mode	include/sdn_tls.h	/^	TRANSPORT_MODE mode;$/;"	m	struct:SDNSSL
+mutex	include/sdn_tls.h	/^	pthread_mutex_t * mutex;$/;"	m	struct:SDNSSL
+mutex	include/sdn_tls.h	/^	pthread_mutex_t * mutex;$/;"	m	struct:SSL_THREAD_DATA
+mutex_array	src/main.c	/^pthread_mutex_t *mutex_array = NULL;$/;"	v
+mutex_buf	dtls_sctp_echo.c	/^static pthread_mutex_t* mutex_buf = NULL;$/;"	v	file:
+mutex_buf	dtls_udp_discard.c	/^static HANDLE* mutex_buf = NULL;$/;"	v	file:
+mutex_buf	dtls_udp_discard.c	/^static pthread_mutex_t* mutex_buf = NULL;$/;"	v	file:
+mutex_buf	dtls_udp_echo.c	/^static HANDLE* mutex_buf = NULL;$/;"	v	file:
+mutex_buf	dtls_udp_echo.c	/^static pthread_mutex_t* mutex_buf = NULL;$/;"	v	file:
+mutex_buf	src/sdn_tls.c	/^pthread_mutex_t* mutex_buf = NULL;$/;"	v
+mutex_buf	src/sdn_tls_1.0.c	/^static pthread_mutex_t* mutex_buf = NULL;$/;"	v	file:
+mysql	include/MYSQLConnector.h	/^ 	MYSQL *mysql;$/;"	m	struct:MYSQLConnector
+no_of_cols	include/MYSQLConnector.h	/^	int no_of_cols;$/;"	m	struct:MYSQLConnector
+no_of_rows	include/MYSQLConnector.h	/^	int no_of_rows;$/;"	m	struct:MYSQLConnector
+operation_mode	include/main.h	/^	SERVICEMODE operation_mode;$/;"	m	struct:ConfigData
+pass_info	dtls_sctp_echo.c	/^struct pass_info {$/;"	s	file:
+pass_info	dtls_udp_discard.c	/^struct pass_info {$/;"	s	file:
+pass_info	dtls_udp_echo.c	/^struct pass_info {$/;"	s	file:
+pid	include/sdn_logger.h	/^	pid_t pid;$/;"	m	struct:logger
+pid	src/sdn_logger.h	/^	pid_t pid;$/;"	m	struct:logger
+port	dtls_sctp_echo.c	/^	unsigned short port;$/;"	m	struct:pass_info	file:
+r_bio	include/sdn_tls.h	/^    BIO *r_bio;$/;"	m	struct:SSL_THREAD_DATA
+r_bio	src/tls.c	/^	BIO *r_bio;$/;"	m	struct:SDNSSL	file:
+result	include/MYSQLConnector.h	/^	MYSQL_RES *result;$/;"	m	struct:MYSQLConnector
+rinfo	include/sdn_tls.h	/^    struct bio_dgram_sctp_rcvinfo rinfo;$/;"	m	struct:SSL_THREAD_DATA	typeref:struct:SSL_THREAD_DATA::bio_dgram_sctp_rcvinfo
+row	include/MYSQLConnector.h	/^	MYSQL_ROW row;$/;"	m	struct:MYSQLConnector
+s4	dtls_udp_discard.c	/^		struct sockaddr_in s4;$/;"	m	union:pass_info::__anon2	typeref:struct:pass_info::__anon2::sockaddr_in	file:
+s4	dtls_udp_echo.c	/^		struct sockaddr_in s4;$/;"	m	union:pass_info::__anon1	typeref:struct:pass_info::__anon1::sockaddr_in	file:
+s4	include/sdn_tls.h	/^		struct sockaddr_in s4;$/;"	m	union:Address	typeref:struct:Address::sockaddr_in
+s6	dtls_udp_discard.c	/^		struct sockaddr_in6 s6;$/;"	m	union:pass_info::__anon2	typeref:struct:pass_info::__anon2::sockaddr_in6	file:
+s6	dtls_udp_echo.c	/^		struct sockaddr_in6 s6;$/;"	m	union:pass_info::__anon1	typeref:struct:pass_info::__anon1::sockaddr_in6	file:
+s6	include/sdn_tls.h	/^		struct sockaddr_in6 s6;$/;"	m	union:Address	typeref:struct:Address::sockaddr_in6
+self_ip	include/main.h	/^	char self_ip[32];$/;"	m	struct:ConfigData
+self_port	include/main.h	/^	int self_port;$/;"	m	struct:ConfigData
+serverHandleThread	include/sdn_tls.h	/^	void * (*serverHandleThread)(void *);$/;"	m	struct:SDNSSL
+server_addr	dtls_udp_discard.c	/^	} server_addr, client_addr;$/;"	m	struct:pass_info	typeref:union:pass_info::__anon2	file:
+server_addr	dtls_udp_echo.c	/^	} server_addr, client_addr;$/;"	m	struct:pass_info	typeref:union:pass_info::__anon1	file:
+server_addr	include/sdn_tls.h	/^	Address server_addr;$/;"	m	struct:SSL_THREAD_DATA
+server_fd	include/main.h	/^	int server_fd;$/;"	m	struct:thread_data
+server_fd	include/sdn_tls.h	/^    int server_fd;$/;"	m	struct:SDNSSL
+server_fd	include/sdn_tls.h	/^    int server_fd;$/;"	m	struct:SSL_THREAD_DATA
+server_fd	src/tls.c	/^	int server_fd;$/;"	m	struct:SDNSSL	file:
+service_mode	include/sdn_tls.h	/^	SERVICEMODE service_mode;$/;"	m	struct:SDNSSL
+sinfo	include/sdn_tls.h	/^	struct bio_dgram_sctp_sndinfo sinfo;$/;"	m	struct:SSL_THREAD_DATA	typeref:struct:SSL_THREAD_DATA::bio_dgram_sctp_sndinfo
+sockaddr_ud	src/main.c	/^union sockaddr_ud$/;"	u	file:
+ss	dtls_udp_discard.c	/^		struct sockaddr_storage ss;$/;"	m	union:pass_info::__anon2	typeref:struct:pass_info::__anon2::sockaddr_storage	file:
+ss	dtls_udp_echo.c	/^		struct sockaddr_storage ss;$/;"	m	union:pass_info::__anon1	typeref:struct:pass_info::__anon1::sockaddr_storage	file:
+ss	include/sdn_tls.h	/^		struct sockaddr_storage ss;$/;"	m	union:Address	typeref:struct:Address::sockaddr_storage
+ssize_t	dtls_udp_discard.c	35;"	d	file:
+ssize_t	dtls_udp_echo.c	36;"	d	file:
+ssl	dtls_udp_discard.c	/^	SSL *ssl;$/;"	m	struct:pass_info	file:
+ssl	dtls_udp_echo.c	/^	SSL *ssl;$/;"	m	struct:pass_info	file:
+ssl	include/main.h	/^	SSL *ssl;	$/;"	m	struct:ConfigData
+ssl	include/main.h	/^	SSL *ssl;	$/;"	m	struct:thread_data
+ssl	include/sdn_tls.h	/^    SSL *ssl;$/;"	m	struct:SSL_THREAD_DATA
+ssl	src/tls.c	/^	SSL *ssl;$/;"	m	struct:SDNSSL	file:
+start_client	dtls_sctp_echo.c	/^void start_client(char *remote_address, char* local_address, int port, int length, int messagenumber) {$/;"	f
+start_client	dtls_udp_discard.c	/^void start_client(char *remote_address, char *local_address, int port, int timetosend) {$/;"	f
+start_client	dtls_udp_echo.c	/^void start_client(char *remote_address, char *local_address, int port, int length, int messagenumber) {$/;"	f
+start_server	dtls_sctp_echo.c	/^void start_server(int port, char *local_address) {$/;"	f
+start_server	dtls_udp_discard.c	/^void start_server(int port, char *local_address) {$/;"	f
+start_server	dtls_udp_echo.c	/^void start_server(int port, char *local_address) {$/;"	f
+stop_sender	dtls_udp_discard.c	/^void stop_sender(int sig) {$/;"	f
+thread_data	include/main.h	/^typedef struct thread_data$/;"	s
+timeout	include/sdn_tls.h	/^	int timeout;$/;"	m	struct:SSL_THREAD_DATA
+tls_client_connect	src/sdn_tls.c	/^int tls_client_connect(SDNSSL *this, int address_family, char * pcIP, uint16_t port)$/;"	f
+tls_listen_loop	src/sdn_tls.c	/^int tls_listen_loop(SDNSSL *this)$/;"	f
+tun_alloc	src/sdn_tun.c	/^int tun_alloc(char *dev, int persist_flag)$/;"	f
+tun_fd	include/sdn_tls.h	/^	int tun_fd;$/;"	m	struct:SSL_THREAD_DATA
+tun_set_queue	src/sdn_tun.c	/^int tun_set_queue(int fd, int enable)$/;"	f
+tun_tap_fd	include/main.h	/^	int tun_tap_fd;$/;"	m	struct:thread_data
+type	include/sdn_logger.h	/^	SDN_LOGGER_TYPE type;$/;"	m	struct:logger
+type	src/sdn_logger.h	/^	SDN_LOGGER_TYPE type;$/;"	m	struct:logger
+var_buf	include/sdn_logger.h	/^	char *var_buf;$/;"	m	struct:logger
+var_buf	src/sdn_logger.h	/^	char *var_buf;$/;"	m	struct:logger
+verbose	dtls_sctp_echo.c	/^int verbose = 0;$/;"	v
+verbose	dtls_udp_discard.c	/^int verbose = 0;$/;"	v
+verbose	dtls_udp_echo.c	/^int verbose = 0;$/;"	v
+verify_cookie	dtls_udp_discard.c	/^int verify_cookie(SSL *ssl, unsigned char *cookie, unsigned int cookie_len)$/;"	f
+verify_cookie	dtls_udp_echo.c	/^int verify_cookie(SSL *ssl, unsigned char *cookie, unsigned int cookie_len)$/;"	f
+verify_cookie	src/sdn_tls_1.0.c	/^int verify_cookie(SSL *ssl, unsigned char *cookie, unsigned int cookie_len)$/;"	f
+verify_cookie	src/sdn_tls_udp.c	/^int verify_cookie(SSL *ssl, unsigned char *cookie, unsigned int cookie_len)$/;"	f
+veryverbose	dtls_sctp_echo.c	/^int veryverbose = 0;$/;"	v
+veryverbose	dtls_udp_discard.c	/^int veryverbose = 0;$/;"	v
+veryverbose	dtls_udp_echo.c	/^int veryverbose = 0;$/;"	v
+w_bio	include/sdn_tls.h	/^    BIO *w_bio;$/;"	m	struct:SSL_THREAD_DATA
+w_bio	src/tls.c	/^	BIO *w_bio;$/;"	m	struct:SDNSSL	file:
