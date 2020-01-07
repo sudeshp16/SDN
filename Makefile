@@ -1,6 +1,8 @@
-default: sdn-client
+default: native
 
-sdn-client: src/sdn_main.c src/sdn_tls.c src/sdn_tls_sctp.c src/sdn_tls_udp.c src/sdn_tun.c src/logger.c src/sdn_interface_ops.c src/sdn_transport.c
-	gcc src/sdn_main.c src/sdn_tls.c src/sdn_tls_sctp.c src/sdn_tls_udp.c src/sdn_tun.c src/logger.c src/sdn_interface_ops.c src/sdn_transport.c -g2 -o sdn-client -I ./include/ -Wall -lssl -lcrypto -lpthread
+native: src/sdn_main.c src/sdn_tls.c src/sdn_tls_sctp.c src/sdn_tls_udp.c src/sdn_tun.c src/logger.c src/sdn_interface_ops.c src/sdn_transport.c
+	gcc src/sdn_main.c src/sdn_tls.c src/sdn_tls_sctp.c src/sdn_tls_udp.c src/sdn_tun.c src/logger.c src/sdn_interface_ops.c src/sdn_transport.c -g2 -o sdn-client -I ./include/  -lssl -lcrypto -lpthread
+latest: src/sdn_main.c src/sdn_tls.c src/sdn_tls_sctp.c src/sdn_tls_udp.c src/sdn_tun.c src/logger.c src/sdn_interface_ops.c src/sdn_transport.c
+	gcc src/sdn_main.c src/sdn_tls.c src/sdn_tls_sctp.c src/sdn_tls_udp.c src/sdn_tun.c src/logger.c src/sdn_interface_ops.c src/sdn_transport.c -g2 -o sdn-client -I ./include/  openssl/openssl-1.0.2u/libssl.a openssl/openssl-1.0.2u/libcrypto.a -ldl -lpthread
 clean: 
 	rm sdn-client
