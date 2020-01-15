@@ -1,1 +1,1 @@
-./sdn-service2  /home/roxor/code/SDWAN/SDN_Client_Version_2.0/SDN_Service/client-cert.pem /home/roxor/code/SDWAN/SDN_Client_Version_2.0/SDN_Service/client-key.pem 0 9001
+./sdn-client  /home/roxor/repo/SDN_Service/certs/client-cert.pem /home/roxor/repo/SDN_Service/certs/client-key.pem 0 9001
