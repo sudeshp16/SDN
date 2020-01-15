@@ -236,7 +236,7 @@ int StartClient(TRANSPORT_MODE mode, uint16_t iSPort, int iAddressFamily, const 
 			return -1;
 		}
 */
-		printf("Transport Connected Succesfully fd %d \n", iSocketFD);
+		//printf("Transport Connected Succesfully fd %d \n", iSocketFD);
 		/*}
  		* */
 	}

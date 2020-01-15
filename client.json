@@ -1,9 +1,11 @@
 {
-	"Operation mode" : "Client"
+	"Operation mode" : "Client",
 	"IP Protocol" : "ipv4",
-	"Transport Protocol": "SCTP",
+	"Transport Protocol" : "SCTP",
 	"IP Address" : "0.0.0.0",
-	"Port " : 9001
+	"Connect IP Address" : "127.0.0.1",
+	"Port" : 9001,
+	"Connect Port" : 9000,
 	"Tun Adapter IP" : "192.168.5.1"
 }
 

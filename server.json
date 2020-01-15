@@ -1,9 +1,9 @@
 {
-	"Operation mode" : "Server"
+	"Operation mode" : "Server",
 	"IP Protocol" : "ipv4",
-	"Transport Protocol": "SCTP",
+	"Transport Protocol" : "SCTP",
 	"IP Address" : "0.0.0.0",
-	"Port " : 9000
+	"Port" : 9000,
 	"Tun Adapter IP" : "192.168.1.1"
 }
 

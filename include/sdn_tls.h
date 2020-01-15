@@ -39,7 +39,10 @@ typedef struct SDNSSL
     int (*TLS_CLIENT_CONNECT)(struct SDNSSL *this, Address server_address);
 	struct logger * pLogger;
 	char szListenAddress[128];
+	char szConnectAddress[128];
 	int iListenPort;
+	int iConnectPort;
+	int iAddress_Family;
 }SDNSSL;
 
 typedef struct SSL_THREAD_DATA

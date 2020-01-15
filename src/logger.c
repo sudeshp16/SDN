@@ -28,7 +28,7 @@ int OpenLogger(struct logger *thisptr, char *pcLoggerType, char *pcFileName, int
 	thisptr->type = type; 
 	if (type == LOGGER_TYPE_FILE)
 	{
-		fd = open(pcFileName, O_CREAT | O_APPEND, S_IRUSR | S_IWUSR| S_IRGRP| S_IWGRP| S_IWOTH);
+		fd = open(pcFileName, O_CREAT | O_APPEND, S_IRUSR | S_IWUSR| S_IRGRP| S_IWGRP| S_IWOTH | S_IROTH);
 		if (fd < 0)
 		{
 			perror("Failed to initialise Log File\n");
@@ -69,6 +69,8 @@ int WriteLog(struct logger *thisptr, int loglevel, char *fmt, ...)
 	char *current_buffer = thisptr->buffer;
 
     int d;
+	unsigned long ld;
+	double db;
     char c, *s = NULL;
 	char temp[50];
 	memset(thisptr->buffer, 0, 2048);
@@ -90,6 +92,18 @@ int WriteLog(struct logger *thisptr, int loglevel, char *fmt, ...)
 					strncpy(current_buffer, temp, strlen(temp));
 					current_buffer = current_buffer + strlen(temp) + 1;
             		break;
+        		case 'p':              /* int */
+            		ld = va_arg(ap, unsigned long);
+					sprintf(temp, "%p", ld);
+					strncpy(current_buffer, temp, strlen(temp));
+					current_buffer = current_buffer + strlen(temp) + 1;
+            		break;
+        		case 'f':              /* int */
+            		db = va_arg(ap, double);
+					sprintf(temp, "%lf", db);
+					strncpy(current_buffer, temp, strlen(temp));
+					current_buffer = current_buffer + strlen(temp) + 1;
+            		break;
         		case 'c':              /* char */
             		/* need a cast here since va_arg only takes fully promoted types */
             		c = (char) va_arg(ap, int);
@@ -107,10 +121,10 @@ int WriteLog(struct logger *thisptr, int loglevel, char *fmt, ...)
 	}
     va_end(ap);
 	*current_buffer = '\0';
-	printf("FD %d \n", thisptr->iFd);
 
 	if(thisptr->type ==  LOGGER_TYPE_FILE && thisptr->iFd > 0 )
 	{
+		printf("FD %d \n", thisptr->iFd);
 		if (loglevel >= thisptr->loglevel)
 			i = write(thisptr->iFd, thisptr->buffer, strlen(thisptr->buffer));
 			if (i <= 0)
