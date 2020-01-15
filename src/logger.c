@@ -28,7 +28,7 @@ int OpenLogger(struct logger *thisptr, char *pcLoggerType, char *pcFileName, int
 	thisptr->type = type; 
 	if (type == LOGGER_TYPE_FILE)
 	{
-		fd = open(pcFileName, O_CREAT | O_APPEND | O_RDWR);
+		fd = open(pcFileName, O_CREAT | O_APPEND, S_IRUSR | S_IWUSR| S_IRGRP| S_IWGRP| S_IWOTH);
 		if (fd < 0)
 		{
 			perror("Failed to initialise Log File\n");
@@ -67,9 +67,11 @@ int WriteLog(struct logger *thisptr, int loglevel, char *fmt, ...)
 		return i;
  	va_list ap;
 	char *current_buffer = thisptr->buffer;
+
     int d;
     char c, *s = NULL;
 	char temp[50];
+	memset(thisptr->buffer, 0, 2048);
 	va_start(ap, fmt);
     while (*fmt)
 	{
@@ -99,17 +101,23 @@ int WriteLog(struct logger *thisptr, int loglevel, char *fmt, ...)
 		else
 		{
 			strncpy(current_buffer, fmt, 1);
+			current_buffer++;
 		}
 		fmt++;
-		
 	}
-	strncpy(current_buffer,"",1); 
     va_end(ap);
+	*current_buffer = '\0';
+	printf("FD %d \n", thisptr->iFd);
 
 	if(thisptr->type ==  LOGGER_TYPE_FILE && thisptr->iFd > 0 )
 	{
 		if (loglevel >= thisptr->loglevel)
 			i = write(thisptr->iFd, thisptr->buffer, strlen(thisptr->buffer));
+			if (i <= 0)
+			{
+				printf("FD %d \n", thisptr->iFd);
+				perror("Failed to write logs :");
+			}
 		return i;
 	}	
 	else

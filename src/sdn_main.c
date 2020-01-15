@@ -132,7 +132,8 @@ int main(int argc, char *argv[], char *envp[])
 	}
 	destroy_tls(&SDN_SSL);
 */
+	iRet = (SDN_SSL.pLogger)->WriteLog(SDN_SSL.pLogger, 1, "Succesfully Destroyed TLS\n");
+	printf("Writen bytes  %d", iRet);
 	exit_logger(SDN_SSL.pLogger);
-	printf("Succesfully Destroyed TLS\n");
 	return 0;
 } 
