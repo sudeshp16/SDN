@@ -161,23 +161,23 @@ SSL_CTX * InitSCTPSSL(pthread_mutex_t **mutex, char * pcCertificate, char *pcPri
 
     SSL_CTX_set_session_cache_mode(ctx, SSL_SESS_CACHE_OFF);
     if (!SSL_CTX_use_certificate_file(ctx, pcCertificate, SSL_FILETYPE_PEM)){
-        printf("ERROR: Certificate not found!");
+        printf("ERROR: Certificate not found! %s\n", pcCertificate);
         SSL_CTX_free(ctx);
         return NULL;
     }
     if (!SSL_CTX_use_PrivateKey_file(ctx, pcPrivate_key, SSL_FILETYPE_PEM)){
-        printf("\nERROR: no private key found!");
+        printf("\nERROR: no private key found! %s\n", pcPrivate_key);
         SSL_CTX_free(ctx);
         return NULL;
     }
     if (!SSL_CTX_check_private_key (ctx)){
-        printf("\nERROR: invalid private key!");
+        printf("\nERROR: invalid private key! %s\n", pcPrivate_key);
         SSL_CTX_free(ctx);
         return NULL;
     }
 	SSL_CTX_set_verify(ctx, SSL_VERIFY_PEER | SSL_VERIFY_CLIENT_ONCE, dtls_verify_callback_sctp);
     SSL_CTX_set_read_ahead(ctx, 1);
-	printf("Success fully started TLSi %p \n", ctx);
+	printf("Success fully started TLS %p \n", ctx);
 	return ctx;
 }
 
@@ -483,6 +483,12 @@ void * HandleSCTPClientServer(void *arg)
 	//SSL_set_bio(ssl, data->bio, data->bio);
 	strncpy(interface_name, "sdncliadapter%d", strlen("sdncliadapter%d")+1);
 	data->tun_fd = tun_alloc(interface_name, 1);
+	int dontblock = 1;
+	iRet = ioctl(data->server_fd, FIONBIO, (char *) &dontblock);
+	if (iRet < 0)
+	{
+		printf("Failed to set socket in non-blocking mode \n");
+	}
 	tun_set_queue(data->tun_fd, 1);
     iRet = SetupInterFaceParams(interface_name, AF_INET, "192.168.0.1", "255.255.255.0", "AA:BB:CC:DD:EE:FF", 1500, error_buff);
 	while (!(SSL_get_shutdown(ssl) & SSL_RECEIVED_SHUTDOWN))
@@ -493,7 +499,8 @@ void * HandleSCTPClientServer(void *arg)
         FD_SET(data->server_fd, &read_fd_set);
         FD_SET(data->tun_fd, &read_fd_set);
 		sleep(5);
-        if ((activity = select(FD_SETSIZE, &read_fd_set, NULL, NULL, &timeout)) < 0)
+        //if ((activity = select(FD_SETSIZE, &read_fd_set, NULL, NULL, &timeout)) < 0)
+        if ((activity = select(FD_SETSIZE, &read_fd_set, NULL, NULL, NULL)) < 0)
         {
             goto Exit_Thread_2;
         }
