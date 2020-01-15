@@ -191,7 +191,7 @@ void SHUTDOWN_SCTP_TLS_SERVER(SSL_CTX *ctx, pthread_mutex_t **mutex)
 	SSL_CTX_free(ctx);
 }
 
-int SCTP_TLS_SERVER_LISTEN(SDNSSL *this, SSL_CTX *ctx, int iSocketFD)
+int SCTP_TLS_SERVER_LISTEN(SDNSSL *thisptr, SSL_CTX *ctx, int iSocketFD)
 {
 	char SSL_Buffer[65536];
 	struct timeval timeout;
@@ -204,7 +204,7 @@ int SCTP_TLS_SERVER_LISTEN(SDNSSL *this, SSL_CTX *ctx, int iSocketFD)
 	BIO *bio = NULL;
 	if (!ctx || !iSocketFD)
 	{
-		printf("Ctx %p or Socket desc %d Failed \n", ctx, iSocketFD);
+		thisptr->pLogger->WriteLog(thisptr->pLogger, 1, "Ctx %p or Socket desc %d Failed \n", ctx, iSocketFD);
 		return -1;
 	}
 	len = sizeof(server_addr);
@@ -212,11 +212,11 @@ int SCTP_TLS_SERVER_LISTEN(SDNSSL *this, SSL_CTX *ctx, int iSocketFD)
 	bio = BIO_new_dgram(iSocketFD, BIO_NOCLOSE);
 	if (bio == NULL)
 	{
-		printf("ERROR: Failed To Create SSL Bio client fd %d %s\n", iSocketFD, ERR_error_string(ERR_get_error(), SSL_Buffer));
+		thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"ERROR: Failed To Create SSL Bio client fd %d %s\n", iSocketFD, ERR_error_string(ERR_get_error(), SSL_Buffer));
 		ERR_print_errors_fp(stderr);
 	}
-	printf("Successfully Created BIO %p\n", bio);
-	while (!this->listen_exit_flag)
+	thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"Successfully Created BIO %p\n", bio);
+	while (!thisptr->listen_exit_flag)
 	{
 		pthread_t tid;
 		SSL_THREAD_DATA *thread_data = NULL;
@@ -224,7 +224,7 @@ int SCTP_TLS_SERVER_LISTEN(SDNSSL *this, SSL_CTX *ctx, int iSocketFD)
 		thread_data = (SSL_THREAD_DATA *)malloc(sizeof(SSL_THREAD_DATA));	
 		if (!thread_data)
 		{
-			printf("Not Enough Memory !!!\n");
+			thisptr->pLogger->WriteLog(thisptr->pLogger, 1, "Not Enough Memory !!!\n");
 			return -2;
 		}
 		client_fd = accept(iSocketFD, (struct sockaddr *)&client_addr, &len);
@@ -233,19 +233,19 @@ int SCTP_TLS_SERVER_LISTEN(SDNSSL *this, SSL_CTX *ctx, int iSocketFD)
 		thread_data->ssl = SSL_new(ctx);
 		bio = BIO_new_dgram(client_fd, BIO_NOCLOSE);
 		thread_data->bio = bio;
-		printf("Client Fd %d threaddata->bio %p\n", thread_data->client_fd, thread_data->bio);
+		thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"Client Fd %d threaddata->bio %p\n", thread_data->client_fd, thread_data->bio);
 		thread_data->server_fd = iSocketFD;
     	if (thread_data->bio == NULL)
     	{
        		SSL_free(thread_data->ssl);
-       		printf("ERROR: Failed To Create SSL Bio client fd %d %s\n", iSocketFD, ERR_error_string(ERR_get_error(), SSL_Buffer));
+       		thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"ERROR: Failed To Create SSL Bio client fd %d %s\n", iSocketFD, ERR_error_string(ERR_get_error(), SSL_Buffer));
        		//return -3;
     	}
     	else
 		{
 			BIO_ctrl(thread_data->bio, BIO_CTRL_DGRAM_SET_RECV_TIMEOUT, 0, &timeout);
 			//SSL_set_bio(thread_data->ssl, thread_data->bio, thread_data->bio);
-			printf("Awaiting for new TLS connection\n");
+			thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"Awaiting for new TLS connection\n");
 		/*
 			thread_data->server_addr.s4.sin_family = AF_INET;
 			thread_data->server_addr.s4.sin_addr.s_addr = INADDR_ANY;
@@ -253,7 +253,7 @@ int SCTP_TLS_SERVER_LISTEN(SDNSSL *this, SSL_CTX *ctx, int iSocketFD)
 		*/
 			memcpy(&thread_data->server_addr, &server_addr, sizeof(struct sockaddr_storage));
 			memcpy(&thread_data->client_addr, &client_addr, sizeof(struct sockaddr_storage));
-			printf("Got a new DTLS SCTP connection, will create a new thread\n");
+			thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"Got a new DTLS SCTP connection, will create a new thread\n");
 			pthread_create(&tid, NULL, HandleSCTPServerClient, (void *)thread_data);	
 		
 		}
@@ -395,7 +395,7 @@ Exit_Thread:
 }
 
 
-int TLS_SCTP_CLIENT_CONNECT(struct SDNSSL *this, Address server_address)
+int TLS_SCTP_CLIENT_CONNECT(struct SDNSSL *thisptr, Address server_address)
 {
 	int iRet = -1;
 	char error_buff[1024];
@@ -407,27 +407,27 @@ int TLS_SCTP_CLIENT_CONNECT(struct SDNSSL *this, Address server_address)
 	timeout.tv_usec = 0;
 	pthread_t tid;
 	BIO_ctrl(bio, BIO_CTRL_DGRAM_SET_RECV_TIMEOUT, 0, &timeout);
-	if (!this)
+	if (!thisptr)
 		return -1;
-	SSL_CTX *ctx = this->ctx;
+	SSL_CTX *ctx = thisptr->ctx;
 	if (!ctx)
 		return -2;
 	ssl = SSL_new(ctx);
 	if (!ssl)
 	{
-		printf("\nERROR: Unable to Initialize SSL !");
+		thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"\nERROR: Unable to Initialize SSL !");
         SSL_CTX_free(ctx);
 		return -3;
 	}
 	#ifdef OPENSSL_NO_SCTP
-		printf("NoSCTP is defined \n");
+		thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"NoSCTP is defined \n");
 	#endif
-	printf("Server fd %d\n", this->server_fd);
-	bio = this->client_bio;
-	//bio = BIO_new_dgram_sctp(this->server_fd, BIO_NOCLOSE);
+	thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"Server fd %d\n", thisptr->server_fd);
+	bio = thisptr->client_bio;
+	//bio = BIO_new_dgram_sctp(thisptr->server_fd, BIO_NOCLOSE);
 	if (bio == NULL)
 	{
-		printf("\nERROR: Unable to Create new sctp client bio\n %s!\n", ERR_error_string(ERR_get_error(), error_buff));
+		thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"\nERROR: Unable to Create new sctp client bio\n %s!\n", ERR_error_string(ERR_get_error(), error_buff));
 		return -4;
 	}
 	BIO_ctrl(bio, BIO_CTRL_DGRAM_SET_CONNECTED, 0, &server_address.ss);
@@ -436,21 +436,21 @@ int TLS_SCTP_CLIENT_CONNECT(struct SDNSSL *this, Address server_address)
 	SSL_set_bio(ssl, bio, bio);
 	if (SSL_connect(ssl) < 0) {
 		perror("SSL_connect");
-		printf("%s\n", ERR_error_string(ERR_get_error(), error_buff));
+		thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"%s\n", ERR_error_string(ERR_get_error(), error_buff));
 		return -4;
 	}
 	printf ("Connected\n");
 	data = (SSL_THREAD_DATA *)malloc(sizeof(SSL_THREAD_DATA ));
 	if (!data)
 	{
-		printf("Not Enough Memory for Thread\n");
+		thisptr->pLogger->WriteLog(thisptr->pLogger, 1,"Not Enough Memory for Thread\n");
 		return -5;
 	}
 	data->ctx = ctx;
 	data->ssl = ssl;
 	data->bio = bio;
 	data->timeout = 5;
-	data->server_fd = this->server_fd;
+	data->server_fd = thisptr->server_fd;
 	memcpy(&(data->server_addr), &server_address, sizeof(server_address));
 	iRet = pthread_create(&tid, NULL, HandleSCTPClientServer, (void *)data);
 	return iRet;

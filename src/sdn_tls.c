@@ -14,64 +14,65 @@
 pthread_mutex_t* mutex_buf = NULL;
 
 
-SDNSSL *init_tls(SDNSSL * this, char * pcCertificate, char *pcPrivate_key, char *pcsSSL_version, char * pcCipherlist)
+SDNSSL *init_tls(SDNSSL * thisptr, char * pcCertificate, char *pcPrivate_key, char *pcsSSL_version, char * pcCipherlist)
 {
-	if (!this)
+	if (!thisptr)
 		return NULL;	
 	if (!pcCertificate || !pcPrivate_key || !pcsSSL_version || !pcCipherlist)
 		return NULL;
-	if (this->mode == TRANSPORT_MODE_UDP)
+	if (thisptr->transport_mode == TRANSPORT_MODE_UDP)
 	{
-		this->TLS_TRANSPORT_INIT = InitUDPSSL;
-		this->SHUTDOWN_TLS_SERVER = SHUTDOWN_UDP_TLS_SERVER;
-		this->serverHandleThread = HandleUDPServerClient;
-		this->TLS_SERVER_LISTEN = UDP_TLS_SERVER_LISTEN;
-        this->TLS_CLIENT_CONNECT = TLS_UDP_CLIENT_CONNECT;
-        this->clientHandleThread = HandleUDPClientServer;
+		thisptr->TLS_TRANSPORT_INIT = InitUDPSSL;
+		thisptr->SHUTDOWN_TLS_SERVER = SHUTDOWN_UDP_TLS_SERVER;
+		thisptr->serverHandleThread = HandleUDPServerClient;
+		thisptr->TLS_SERVER_LISTEN = UDP_TLS_SERVER_LISTEN;
+        thisptr->TLS_CLIENT_CONNECT = TLS_UDP_CLIENT_CONNECT;
+        thisptr->clientHandleThread = HandleUDPClientServer;
 	}
-	else if (this->mode == TRANSPORT_MODE_SCTP)
+	else if (thisptr->transport_mode == TRANSPORT_MODE_SCTP)
 	{
-		this->TLS_TRANSPORT_INIT = InitSCTPSSL;
-		this->SHUTDOWN_TLS_SERVER = SHUTDOWN_SCTP_TLS_SERVER;
-		this->serverHandleThread = HandleSCTPServerClient;
-		this->TLS_SERVER_LISTEN = SCTP_TLS_SERVER_LISTEN;
-        this->TLS_CLIENT_CONNECT = TLS_SCTP_CLIENT_CONNECT;
-        this->clientHandleThread = HandleSCTPClientServer;
+		thisptr->TLS_TRANSPORT_INIT = InitSCTPSSL;
+		thisptr->SHUTDOWN_TLS_SERVER = SHUTDOWN_SCTP_TLS_SERVER;
+		thisptr->serverHandleThread = HandleSCTPServerClient;
+		thisptr->TLS_SERVER_LISTEN = SCTP_TLS_SERVER_LISTEN;
+        thisptr->TLS_CLIENT_CONNECT = TLS_SCTP_CLIENT_CONNECT;
+        thisptr->clientHandleThread = HandleSCTPClientServer;
 	}	
-	this->ctx = this->TLS_TRANSPORT_INIT(&mutex_buf, pcCertificate, pcPrivate_key, pcsSSL_version,pcCipherlist, this->service_mode);
-	if (!this->ctx)
+	thisptr->ctx = thisptr->TLS_TRANSPORT_INIT(&mutex_buf, pcCertificate, pcPrivate_key, pcsSSL_version,pcCipherlist, thisptr->service_mode);
+	if (!thisptr->ctx)
 	{
-		printf("Failed to Initialized TLS\n");	
+		//thisptr->pLogger->WriteLog(thisptr->pLogger ,1 , 
+		thisptr->pLogger->WriteLog(thisptr->pLogger ,1 , "Failed to Initialized TLS\n");	
 		return NULL;
 	}
-	printf("SuccessFully Initialized TLS\n");	
-	return this;
+	thisptr->pLogger->WriteLog(thisptr->pLogger ,1 , "SuccessFully Initialized TLS\n");	
+	return thisptr;
 }
 
 
-int tls_listen_loop(SDNSSL *this)
+int tls_listen_loop(SDNSSL *thisptr)
 {
 	int iRet = 0;
-	this->listen_exit_flag = 0;
-	iRet = this->TLS_SERVER_LISTEN(this, this->ctx, this->server_fd);
+	thisptr->listen_exit_flag = 0;
+	iRet = thisptr->TLS_SERVER_LISTEN(thisptr, thisptr->ctx, thisptr->server_fd);
 	if (iRet)
 	{
-		printf("Finished Listening TLS\n");
+		thisptr->pLogger->WriteLog(thisptr->pLogger ,1 , "Finished Listening TLS\n");
 	}
 	return iRet;
 }
 
-int tls_client_connect(SDNSSL *this, int address_family, char * pcIP, uint16_t port)
+int tls_client_connect(SDNSSL *thisptr, int address_family, char * pcIP, uint16_t port)
 {
 	int iRet = 0;
 	Address  server_address;
-	int iLength = sizeof(this->server_address);
-	this->client_bio = BIO_new_dgram(this->server_fd, BIO_NOCLOSE);
-	if ((iRet =  connect(this->server_fd, (const struct sockaddr *)&(this->server_address), iLength)) < 0)
+	int iLength = sizeof(thisptr->server_address);
+	thisptr->client_bio = BIO_new_dgram(thisptr->server_fd, BIO_NOCLOSE);
+	if ((iRet =  connect(thisptr->server_fd, (const struct sockaddr *)&(thisptr->server_address), iLength)) < 0)
     {
          //if (pcError)
          //    snprintf(pcError, strlen(SOCKET_CONNECT_ERROR) + strlen(strerror(errno)), SOCKET_CONNECT_ERROR, strerror(errno));
-         close(this->server_fd);
+         close(thisptr->server_fd);
          return -4;
    	}
 	if (AF_INET == address_family)
@@ -88,7 +89,7 @@ int tls_client_connect(SDNSSL *this, int address_family, char * pcIP, uint16_t p
 		struct in6_addr ipv6_result;
 		if ((iRet = inet_pton(AF_INET6, pcIP, &ipv6_result) != 1)) 
 		{
-			printf("Failed to Connect IP To IPv6 Server\n");
+			thisptr->pLogger->WriteLog(thisptr->pLogger ,1 , "Failed to Connect IP To IPv6 Server\n");
 			return -1;
 		}
 		serv_addr6.sin6_addr = ipv6_result;
@@ -97,11 +98,11 @@ int tls_client_connect(SDNSSL *this, int address_family, char * pcIP, uint16_t p
 		serv_addr6.sin6_family = AF_INET6;
 		memcpy(&server_address, &serv_addr6, sizeof(struct sockaddr_in6));
 	}
-	iRet = this->TLS_CLIENT_CONNECT(this,server_address);
+	iRet = thisptr->TLS_CLIENT_CONNECT(thisptr,server_address);
 	return iRet;
 }
 
-void destroy_tls(SDNSSL *this)
+void destroy_tls(SDNSSL *thisptr)
 {
-	this->SHUTDOWN_TLS_SERVER(this->ctx, &mutex_buf);
+	thisptr->SHUTDOWN_TLS_SERVER(thisptr->ctx, &mutex_buf);
 }

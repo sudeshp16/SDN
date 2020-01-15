@@ -128,19 +128,19 @@ struct logger * init_logger(struct logger *thisptr, char *pcLoggerType, char *pc
 		return NULL;
 	if (!thisptr)
 	{
-		thisptr = (struct logger *)malloc(sizeof(struct logger));
-		if (!thisptr)
+		struct logger * ptr = (struct logger *)malloc(sizeof(struct logger));
+		if (!ptr)
 			return NULL;
-		thisptr->fpOpenLogger = OpenLogger;
-		thisptr->fpCloseLogger = CloseLogger;
-		thisptr->WriteLog = WriteLog;
-		iRet = thisptr->fpOpenLogger(thisptr, pcLoggerType, pcFileName, loglevel, facility);
+		ptr->fpOpenLogger = OpenLogger;
+		ptr->fpCloseLogger = CloseLogger;
+		ptr->WriteLog = WriteLog;
+		iRet = ptr->fpOpenLogger(ptr, pcLoggerType, pcFileName, loglevel, facility);
 		if (iRet != 0)
 		{
-			free(thisptr);
+			free(ptr);
 			return NULL;
 		}
-		return thisptr;
+		return ptr;
 	}
  	return thisptr;
 }

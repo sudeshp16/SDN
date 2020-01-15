@@ -6,6 +6,7 @@
 #include <openssl/err.h>
 #include <pthread.h>
 #include <openssl/rand.h>
+#include <sdn_logger.h>
 #include <sdn_transport.h>
 
 
@@ -26,7 +27,7 @@ typedef struct SDNSSL
 	struct sockaddr_in6 server_address6;
     SSL_CTX *ctx;
 	pthread_mutex_t * mutex;
-	TRANSPORT_MODE mode;
+	TRANSPORT_MODE transport_mode;
 	SERVICEMODE service_mode;
 	//Temporary adding for client bio 
 	BIO * client_bio;
@@ -36,6 +37,9 @@ typedef struct SDNSSL
 	void * (*clientHandleThread)(void *);
     int (*TLS_SERVER_LISTEN) (struct SDNSSL *this, SSL_CTX *ctx, int iSocketFD);
     int (*TLS_CLIENT_CONNECT)(struct SDNSSL *this, Address server_address);
+	struct logger * pLogger;
+	char szListenAddress[128];
+	int iListenPort;
 }SDNSSL;
 
 typedef struct SSL_THREAD_DATA

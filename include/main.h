@@ -5,6 +5,7 @@
 #include <openssl/err.h>
 #include <openssl/rand.h>
 #include <signal.h>
+#include <json-c/json.h>
 #include <sdn_tls.h>
 #include <sdn_tls_udp.h>
 #include <sdn_interface_ops.h>
